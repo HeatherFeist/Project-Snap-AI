@@ -1,0 +1,17 @@
+{
+  // Wrangler config for the CodeSnap Cloudflare Pages project. See
+  // README.md's "Running locally / deploying" section for the full
+  // deploy walkthrough.
+  "name": "codesnap",
+  "compatibility_date": "2024-09-23",
+  "pages_build_output_dir": "public",
+
+  // Plaintext, non-secret environment variables only. This file is
+  // committed to git, so NOTHING here is private. ANTHROPIC_API_KEY is a
+  // real, billable secret and must NEVER be added here -- it stays set as
+  // an encrypted environment variable (or a Wrangler secret) in the
+  // Cloudflare dashboard only, exactly as docs/SUPABASE_SETUP.md's sibling
+  // setup already assumes for the Supabase keys that ARE safe to ship
+  // client-side (those are a different kind of key, meant to be public).
+  "vars": {}
+}
