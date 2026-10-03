@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CodeSnap — Code-Check Your Job Site Photo</title>
+<meta name="description" content="Snap a photo of your project, get guidance on doing it right and the code that governs it." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">📷 CodeSnap</div>
+  <div class="tagline">Snap it. Build it right. Know the code.</div>
+</header>
+
+<main>
+  <section id="screen-intake" class="screen active">
+    <div class="card">
+      <h1>Check Your Work</h1>
+      <p class="sub">Upload or take a photo of what you're building. Tell us where you are. Get guidance on doing it right, and the code that governs it.</p>
+
+      <div class="field">
+        <label for="photo-input">Photo</label>
+        <div id="photo-drop" class="photo-drop">
+          <img id="photo-preview" alt="" style="display:none;" />
+          <div id="photo-placeholder" class="photo-placeholder">
+            <span class="icon">📷</span>
+            <span>Tap to take a photo or choose one</span>
+          </div>
+        </div>
+        <input id="photo-input" type="file" accept="image/*" capture="environment" />
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="state-select">State</label>
+          <select id="state-select">
+            <option value="">Select a state…</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="county-input">County / Jurisdiction <span class="optional">(optional)</span></label>
+          <input id="county-input" type="text" placeholder="e.g. Wake County" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="notes-input">What are you working on? <span class="optional">(optional, helps accuracy)</span></label>
+        <textarea id="notes-input" rows="2" placeholder="e.g. Attaching a deck ledger board to the house rim joist"></textarea>
+      </div>
+
+      <div id="intake-status" class="status" role="status"></div>
+
+      <button id="analyze-btn" class="btn btn-primary" type="button">Analyze Photo</button>
+
+      <p class="disclaimer">
+        CodeSnap gives guidance to help you do the work correctly and know which code section to check —
+        it is <strong>not</strong> a substitute for your local building department, a licensed inspector,
+        or a licensed engineer or electrician's own sign-off. Code requirements vary by local amendment;
+        always verify the current adopted text for your jurisdiction.
+      </p>
+    </div>
+  </section>
+
+  <section id="screen-loading" class="screen">
+    <div class="card center">
+      <div class="spinner"></div>
+      <p>Analyzing your photo…</p>
+    </div>
+  </section>
+
+  <section id="screen-result" class="screen">
+    <div class="card">
+      <button id="back-btn" class="btn btn-text" type="button">← New Photo</button>
+      <h1>Your Code-Check</h1>
+      <div id="result-photo-wrap">
+        <img id="result-photo" alt="Analyzed project photo" />
+      </div>
+      <div id="result-meta" class="result-meta"></div>
+      <div id="result-content" class="result-content"></div>
+      <p class="disclaimer">
+        This is guidance to help you ask the right questions and check the right section — not a
+        substitute for your local building department, a licensed inspector, or a licensed engineer
+        or electrician's own sign-off.
+      </p>
+      <a id="icc-link" class="btn btn-secondary" href="https://codes.iccsafe.org/" target="_blank" rel="noopener">
+        Read the Real Code at codes.iccsafe.org ↗
+      </a>
+    </div>
+  </section>
+
+  <section id="screen-error" class="screen">
+    <div class="card center">
+      <p id="error-message" class="error-message"></p>
+      <button id="error-back-btn" class="btn btn-primary" type="button">Try Again</button>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>CodeSnap cites model code sections (IRC/IBC/NEC/IPC) — always verify the current, locally-adopted text.</p>
+</footer>
+
+<script src="states.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

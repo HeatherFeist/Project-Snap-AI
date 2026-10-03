@@ -1,0 +1,132 @@
+:root {
+  --bg: #0f1419;
+  --card-bg: #1a2029;
+  --accent: #f0a500;
+  --accent-dark: #c9890a;
+  --text: #e8ecf1;
+  --text-dim: #9aa5b1;
+  --border: rgba(240, 165, 0, 0.25);
+  --danger: #ff6b6b;
+  --success: #4fce8a;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  padding: 1rem 1.2rem 0.6rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.brand { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+.tagline { font-size: 0.85rem; color: var(--text-dim); margin-top: 0.2rem; }
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 1.2rem;
+}
+
+.screen { display: none; width: 100%; max-width: 560px; }
+.screen.active { display: block; }
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+}
+.card.center { text-align: center; padding: 2.5rem 1.4rem; }
+
+h1 { font-size: 1.3rem; margin: 0 0 0.4rem; }
+.sub { color: var(--text-dim); font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.2rem; }
+
+.field { margin-bottom: 1rem; }
+.field label { display: block; font-size: 0.78rem; letter-spacing: 0.03em; color: var(--text-dim); margin-bottom: 0.4rem; }
+.field .optional { font-weight: 400; opacity: 0.7; }
+.field-row { display: flex; gap: 0.8rem; }
+.field-row .field { flex: 1; }
+
+input[type="text"], select, textarea {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #0f1419;
+  color: var(--text);
+  font-size: 0.92rem;
+  font-family: inherit;
+}
+textarea { resize: vertical; }
+
+#photo-input { display: none; }
+.photo-drop {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  background: #0f1419;
+}
+.photo-drop img { width: 100%; max-height: 320px; object-fit: contain; }
+.photo-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--text-dim); font-size: 0.85rem; }
+.photo-placeholder .icon { font-size: 2rem; }
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 0.8rem 1.4rem;
+  border-radius: 50px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 0.6rem;
+}
+.btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color: #0f1419; }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-secondary { background: none; border: 1px solid var(--accent); color: var(--accent); }
+.btn-text { width: auto; background: none; color: var(--text-dim); padding: 0.4rem 0; font-weight: 400; }
+
+.status { min-height: 1.3em; font-size: 0.85rem; color: var(--danger); margin: 0.4rem 0; }
+
+.disclaimer { font-size: 0.72rem; color: var(--text-dim); line-height: 1.5; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+
+.spinner {
+  width: 40px; height: 40px; margin: 0 auto 1rem;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#result-photo-wrap { margin-bottom: 1rem; }
+#result-photo { width: 100%; border-radius: 8px; max-height: 280px; object-fit: cover; }
+.result-meta { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0.8rem; }
+.result-content { font-size: 0.92rem; line-height: 1.65; white-space: pre-wrap; }
+.result-content strong { color: var(--accent); }
+
+.error-message { color: var(--danger); margin-bottom: 1rem; }
+
+.site-footer { text-align: center; padding: 1rem; font-size: 0.72rem; color: var(--text-dim); }
+
+@media (max-width: 480px) {
+  .field-row { flex-direction: column; gap: 0; }
+}
