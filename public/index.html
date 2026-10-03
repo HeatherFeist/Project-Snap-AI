@@ -11,6 +11,14 @@
 <header class="site-header">
   <div class="brand">📷 CodeSnap</div>
   <div class="tagline">Snap it. Build it right. Know the code.</div>
+  <div id="account-bar" class="account-bar">
+    <a href="#" id="signin-link" class="account-link">Sign In</a>
+    <span id="signedin-panel" class="account-signedin" style="display:none;">
+      <a href="#" id="my-jobs-link" class="account-link">📋 My Jobs</a>
+      <span id="account-email" class="account-email"></span>
+      <a href="#" id="signout-link" class="account-link">Sign Out</a>
+    </span>
+  </div>
 </header>
 
 <main>
@@ -53,6 +61,10 @@
 
       <button id="analyze-btn" class="btn btn-primary" type="button">Analyze Photo</button>
 
+      <p id="signin-nudge" class="signin-nudge">
+        <a href="#" id="signin-nudge-link">Sign in</a> to automatically save this to your job history.
+      </p>
+
       <p class="disclaimer">
         CodeSnap gives guidance to help you do the work correctly and know which code section to check —
         it is <strong>not</strong> a substitute for your local building department, a licensed inspector,
@@ -77,6 +89,7 @@
         <img id="result-photo" alt="Analyzed project photo" />
       </div>
       <div id="result-meta" class="result-meta"></div>
+      <div id="result-save-status" class="result-save-status"></div>
       <div id="result-content" class="result-content"></div>
       <p class="disclaimer">
         This is guidance to help you ask the right questions and check the right section — not a
@@ -95,12 +108,53 @@
       <button id="error-back-btn" class="btn btn-primary" type="button">Try Again</button>
     </div>
   </section>
+
+  <section id="screen-signin" class="screen">
+    <div class="card">
+      <button id="signin-back-btn" class="btn btn-text" type="button">← Back</button>
+      <h1>Sign In</h1>
+      <p class="sub">Sign in with just your email — no password, a magic link — to save and revisit your job history.</p>
+      <div id="signin-out-panel">
+        <div class="field">
+          <label for="signin-email-input">Email</label>
+          <input id="signin-email-input" type="email" placeholder="you@example.com" autocomplete="off" />
+        </div>
+        <button id="signin-send-btn" class="btn btn-primary" type="button">Send Magic Link</button>
+        <div id="signin-status" class="status" role="status"></div>
+      </div>
+      <div id="signin-in-panel" style="display:none;">
+        <p>You're signed in as <strong id="signin-in-email"></strong>.</p>
+        <button id="go-to-jobs-btn" class="btn btn-primary" type="button">View My Jobs</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="screen-jobs" class="screen">
+    <div class="card">
+      <button id="jobs-back-btn" class="btn btn-text" type="button">← Back</button>
+      <h1>My Jobs</h1>
+      <div id="jobs-status" class="status" role="status"></div>
+      <div id="jobs-list"></div>
+      <div id="jobs-empty" class="sub" style="display:none;">No saved jobs yet — analyses you run while signed in will show up here.</div>
+    </div>
+  </section>
+
+  <section id="screen-job-detail" class="screen">
+    <div class="card">
+      <button id="job-detail-back-btn" class="btn btn-text" type="button">← My Jobs</button>
+      <h1>Saved Job</h1>
+      <div id="job-detail-meta" class="result-meta"></div>
+      <div id="job-detail-content" class="result-content"></div>
+      <button id="job-detail-delete-btn" class="btn btn-secondary danger-btn" type="button">Delete This Job</button>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
   <p>CodeSnap cites model code sections (IRC/IBC/NEC/IPC) — always verify the current, locally-adopted text.</p>
 </footer>
 
+<script src="supabase-config.js"></script>
 <script src="states.js"></script>
 <script src="app.js"></script>
 </body>
